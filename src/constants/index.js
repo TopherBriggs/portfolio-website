@@ -21,6 +21,9 @@ export const navLinks = [
     },
   ];
   
+  export const emailUserId = 'yM_WBJPPGPXP0zw6d';
+  export const emailServiceId = 'service_xznzo2t';
+  export const emailTemplate = 'template_dpnklfg'
   export const clientReviews = [
     {
       id: 1,
