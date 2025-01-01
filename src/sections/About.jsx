@@ -62,7 +62,7 @@ const About = () => {
                         <div>
                             <p className='grid-headtext'>Location</p>
                             <p className='grid-subtext'>I'm willing to work anywhere in the metro Detroit area, including Detroit, Ann Arbor, and the surrounding areas.</p>
-                            <Button name='Contact me' isBeam containerClass='w-full mt-10' />
+                            <a href="#contact"><Button name='Contact me' isBeam containerClass='w-full mt-10' /></a>
                         </div></div>
                 </div>
                 <div className="xl:col-span-2 xl:row-span-3">
