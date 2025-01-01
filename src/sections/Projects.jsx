@@ -30,8 +30,8 @@ const Projects = () => {
     return (
         <section className='c-space my-20' id='projects'>
             <p className='head-text'>My Work</p>
-            <div className='grid lg:grid-cols-2 grid-cols-1 gap-5 w-full'>
-                <div className='flex flex-col gap-5 realtive sm:p-10 py-10 px-5 shadow-2xl shaodw-black-200'>
+            <div className='grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full'>
+                <div className='flex flex-col gap-5 relative sm:p-10 py-10 px-5 shadow-2xl shadow-black-200'>
                     <div className='absolute top-0 right-0'>
                         <img src={currentProject.spotlight} alt='spotlight' className='w-full h-96 object-cover rounded-xl' />
                     </div>
@@ -44,15 +44,27 @@ const Projects = () => {
                         <p className='animatedText'>{currentProject.subdesc}</p>
                     </div>
                     <div className='flex items-center justify-between gap-5 flex-wrap'>
-                        <div className='flex items-center gap-3'>
+                        <div className="flex items-center gap-3">
                             {currentProject.tags.map((tag, index) => (
-                                <div key={index} className='tech-logo'>
-                                    <img src={tag.path} alt={tag.name} />
-                                </div>))
-                            }
+                                <div
+                                    key={index}
+                                    className="relative group flex items-center justify-center w-12 h-12 bg-black-300 rounded-lg shadow-md transition-transform duration-300 ease-in-out transform group-hover:scale-110 group-hover:rotate-3"
+                                >
+                                    <img
+                                        src={tag.path}
+                                        alt={tag.name}
+                                        className="scale-75 transition-transform duration-300 ease-in-out transform group-hover:translate-y-[-4px] group-hover:scale-110 group-hover:rotate-6"
+                                    />
+                                    <div className="whitespace-nowrap absolute bottom-14 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-sm rounded-md px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
+                                        {tag.name}
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <a className='flex items-center gap-2 cursor-pointer text-white-600' href={currentProject.href} target='_blank' rel='noreferrer'><p>Check Live Site</p>
-                            <img src='/assets/arrow-up.png' alt='arrow' className='w-3 h-3' /></a>
+
+                        {currentProject.href ? (
+                        <a className='flex items-center gap-2 cursor-pointer text-white-600' href={currentProject.href} target='_blank' rel='noreferrer'><p>Learn More</p>
+                            <img src='/assets/arrow-up.png' alt='arrow' className='w-3 h-3' /></a>) : null}
                     </div>
                     <div className='flex justify-between items items-center mt-7'>
                         <button className='arrow-btn' onClick={() => handleNavigation('prev')}>
@@ -65,12 +77,13 @@ const Projects = () => {
                 </div>
 
                 <div className='border border-black-300 bg-black-200 rounded-lg h-96 md:h-full'>
-                    <Canvas>
+                    <Canvas gl={{ preserveDrawingBuffer: true }}>
                         <ambientLight intensity={Math.PI} />
                         <directionalLight position={[10, 10, 5]} />
                         <Center>
                             <Suspense fallback={<CanvasLoader />}>
                                 <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+
                                     <DemoComputer texture={currentProject.texture} />
                                 </group>
                             </Suspense>

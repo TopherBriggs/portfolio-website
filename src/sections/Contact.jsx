@@ -40,7 +40,7 @@ const Contact = () => {
                 <img src='/assets/terminal.png' alt='terminal-background' className='absolute inset-0 min-h-screen' />
                 <div className='contact-container'>
                     <h3 className='head-text'>Contact Me</h3>
-                    <p className='text-lg text-white-600 mt-3'>Pls hire me </p>
+                    <p className='text-lg text-white-600 mt-3'>Get in touch with me</p>
                     <form ref={formRef} onSubmit={handleSubmit} className='mt-12 flex flex-col space-y-7'>
                         <label className='space-y-3'>
                             <span className='field-label'>Full Name</span>
