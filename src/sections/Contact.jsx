@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import emailjs from '@emailjs/browser';
-import { emailUserId, emailServiceId, emailTemplate} from '../constants';
+import { emailUserId, emailServiceId, emailTemplate} from '../constants/index.js';
 const Contact = () => {
     const [loading, setloading] = useState(false);
     const formRef = useRef();
@@ -17,9 +17,9 @@ const Contact = () => {
         e.preventDefault();
         setloading(true);
         try {
-            await emailjs.send({emailServiceId}, {emailTemplate},
+            await emailjs.send(emailServiceId, emailTemplate,
                 { from_name: form.name, to_name: 'Topher', from_email: form.email, to_email: 'chris@topherbrig.gs', message: form.message },
-            {emailUserId})
+            emailUserId);
             setloading(false);
             alert('Message sent successfully');
             setForm({
